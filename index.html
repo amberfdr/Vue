@@ -29,6 +29,16 @@
         <p>{{message}}</p>
         <input v-model="message"/>
     </div>
+   
+    <div id="app-7">
+        <ol>
+            <todo-item
+            v-for="item in groceryList"
+            v-bind:todo="item"
+            v-bind:key="item.id">
+            </todo-item>
+        </ol>
+    </div>
     <script>
             let app = new Vue({
                 el:'#app',
@@ -76,16 +86,24 @@
                 }
             })
 
+
+            //定义新组件
+            Vue.component('todo-item',{
+                props:['todo'],
+                template:'<li>{{todo.text}}</li>'
+            })
+
             let app7 = new Vue({
                 el:'#app-7',
                 data:{
                     groceryList:[
                         {id:1,text:'苹果'},
-                        {id:1,text:'nai'},
-                        {id:1,text:'苹果'}
+                        {id:2,text:'nai'},
+                        {id:3,text:'苹果'}
                     ]
                 }
             })
+
     </script>
 </body>
 </html>
